@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #df6f1d;
+}
+
+.hero-section {
+  /* height: 34vw; */
+  background: url("/hero.png") no-repeat;
+  background-size: contain;
+  object-fit: cover;
+}
+.hero {
+  border-radius: 20px;
+  background-image: linear-gradient(to right bottom, #00000055, #d0762788),
+    url("/hero.png");
+}
