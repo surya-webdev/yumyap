@@ -25,7 +25,7 @@ function App() {
           >
             {/* <Route index element={<Navigate replace to={"/"} />} /> */}
             <Route index path="/" element={<Home />} />
-            <Route index path="restaurant/:id" element={<RestaurantDetail />} />
+            <Route path="restaurant/:id" element={<RestaurantDetail />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />

@@ -8,8 +8,11 @@ export function useSignup() {
       newUser({ name, email, password }),
     onSuccess: () => {
       toast.success(
-        "your account created sucesfully please check your inbox confirm your email",
+        "your account created sucesfully please login now! Explore our foods",
       );
+    },
+    onError: (error) => {
+      toast.error(error.message);
     },
   });
   return {

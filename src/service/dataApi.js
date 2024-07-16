@@ -22,8 +22,8 @@ export async function getRestaurantById(id) {
     .single();
 
   if (error) {
-    console.error(error);
-    throw new Error("Couln&apos;t find the restaurants ");
+    console.error(error.message);
+    throw new Error(error.message);
   }
 
   return restaurant;
@@ -33,15 +33,17 @@ export async function newUser({ email, password, name }) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    data: {
-      fullName: name,
-      avatar: "",
+    options: {
+      data: {
+        fullName: name,
+        avatar: "",
+      },
     },
   });
 
   if (error) {
     console.error(error.message);
-    throw new Error("Couln&apos;t signup please try again ");
+    throw new Error(error.message);
   }
   return data;
 }
