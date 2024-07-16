@@ -1,36 +1,30 @@
-function Menu({ item }) {
-  console.log(item);
+import Button from "./Button";
+import Spinner from "./Spinner";
+import { FaPlus } from "react-icons/fa6";
 
-  // return (
-  //   <div
-  //     key={item}
-  //     className="bg-card overflow-hidden rounded-lg shadow-lg transition-shadow hover:shadow-xl"
-  //   >
-  //     <img
-  //       src="/placeholder.svg"
-  //       alt="Menu Item"
-  //       width={400}
-  //       height={225}
-  //       className="h-48 w-full object-cover"
-  //     />
-  //     <div className="p-4">
-  //       <h3 className="text-foreground mb-2 text-lg font-bold">
-  //         Menu Item {item}
-  //       </h3>
-  //       <p className="text-muted-foreground mb-4 text-sm">
-  //         Description of the menu item goes here.
-  //       </p>
-  //       <div className="flex items-center justify-between">
-  //         <span className="text-foreground text-lg font-bold">$9.99</span>
-  //         {/* <Button >
-  //       <PlusIcon className="mr-2 h-4 w-4" />
-  //       Add to Cart
-  //     </Button> */}
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
-  return <></>;
+function Menu({ item }) {
+  if (!item) return <Spinner />;
+  const { image, id, name, price } = item;
+
+  return (
+    <div className="rounded-lg shadow-lg transition-shadow hover:shadow-xl">
+      <img className="h-[18rem] w-full rounded-lg md:h-[20rem]" src={image} />
+      <div className="my-4 flex flex-col gap-4 px-2">
+        <p className="text-xl font-bold md:text-2xl">{name}</p>
+        <div className="my-4 flex items-center justify-between">
+          <p className="text-2xl">{`₹${price}`}</p>
+          <div>
+            <Button className="flex items-center justify-center text-xl">
+              <span>
+                <FaPlus />
+              </span>
+              <span>Add to Cart</span>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Menu;

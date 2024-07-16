@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import RestaurantDetail from "./pages/RestaurantDetail";
+import Login from "./ui/Login";
+import SignUp from "./ui/Signup";
 
 function App() {
   const queryClient = new QueryClient();
@@ -17,6 +19,8 @@ function App() {
             <Route index path="/" element={<Home />} />
             <Route index path="restaurant/:id" element={<RestaurantDetail />} />
           </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
