@@ -3,6 +3,7 @@ import Applayout from "./ui/Applayout";
 import Home from "./pages/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import RestaurantDetail from "./pages/RestaurantDetail";
 
 function App() {
   const queryClient = new QueryClient();
@@ -12,8 +13,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Applayout />}>
-            <Route index element={<Navigate replace to={"home"} />} />
-            <Route index path="home" element={<Home />} />
+            {/* <Route index element={<Navigate replace to={"/"} />} /> */}
+            <Route index path="/" element={<Home />} />
+            <Route index path="restaurant/:id" element={<RestaurantDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,10 +1,11 @@
 import useGetRestaurant from "../service/useGetRestaurant";
 import RestaurantLayout from "./RestaurantLayout";
+import Spinner from "./Spinner";
 
 function Restaurant() {
   const { data, isLoading } = useGetRestaurant();
 
-  if (isLoading) return <p>...loading</p>;
+  if (isLoading) return <Spinner />;
 
   return (
     <section className="mx-2 my-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
