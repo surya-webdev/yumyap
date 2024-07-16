@@ -2,8 +2,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import ErrorLabel from "./ErrorLabel";
 import Button from "./Button";
-// import { useLogin } from "../service/useLogin";
-// import NavLogo from "./NavLogo";
+import { useLogin } from "../service/useLogin";
 
 function Login() {
   const navigate = useNavigate();
@@ -12,11 +11,11 @@ function Login() {
   const inputStyle =
     "h-10 rounded-md placeholder:px-2 placeholder:text-black border-2  ";
 
-  // const { isLoginMutate, isLoading } = useLogin();
+  const { isLoginMutate, isLoading } = useLogin();
   const { errors } = formState;
 
   function submit({ email, password }) {
-    // isLoginMutate({ email, password });
+    isLoginMutate({ email, password });
   }
 
   return (
@@ -63,16 +62,14 @@ function Login() {
 
           <Button>Login</Button>
         </form>
-        <div className="mx-4 flex">
-          <p className={labels + "my-10 text-sm"}>
-            Don&apos;t have account
-            <a
-              className="block cursor-pointer text-primary underline"
-              onClick={() => navigate("/signup")}
-            >
-              Sign Up
-            </a>
-          </p>
+        <div className="mx-4 flex items-center justify-center gap-2">
+          <p className={labels + "my-10 text-sm"}>Don&apos;t have account</p>
+          <a
+            className="block cursor-pointer text-primary underline"
+            onClick={() => navigate("/signup")}
+          >
+            Sign Up
+          </a>
         </div>
       </div>
     </div>

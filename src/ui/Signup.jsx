@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 // import { useSignup } from "../service/useSignup";
 import ErrorLabel from "./ErrorLabel";
 import Button from "./Button";
+import { useSignup } from "../service/useSignup";
+import Spinner from "./Spinner";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -11,15 +13,16 @@ function SignUp() {
   const inputStyle =
     "h-10 rounded-md placeholder:px-2 placeholder:text-black border-2  ";
 
-  // const { isSignupMutate, isLoading } = useSignup();
+  const { isSignupMutate, isLoading } = useSignup();
 
   const { register, handleSubmit, formState, getValues, reset } = useForm();
 
   const { errors } = formState;
-  // if (!isLoading) return <p>....Loading</p>;
+
+  if (isLoading) return <Spinner />;
 
   function submit({ name, password, email }) {
-    // isSignupMutate({ name, password, email }, { onSettled: reset() });
+    isSignupMutate({ name, password, email }, { onSettled: reset() });
   }
 
   return (
@@ -40,7 +43,7 @@ function SignUp() {
               Your Name
             </label>
             <input
-              // disabled={isLoading}
+              disabled={isLoading}
               id="name"
               type="text"
               className={inputStyle}
@@ -52,7 +55,7 @@ function SignUp() {
               Email
             </label>
             <input
-              // disabled={isLoading}
+              disabled={isLoading}
               id="email"
               type="text"
               className={inputStyle}
@@ -68,7 +71,7 @@ function SignUp() {
               Password
             </label>
             <input
-              // disabled={isLoading}
+              disabled={isLoading}
               id="password"
               className={inputStyle}
               placeholder="password"
@@ -82,7 +85,7 @@ function SignUp() {
               Repeat Password
             </label>
             <input
-              // disabled={isLoading}
+              disabled={isLoading}
               id="repeatpassword"
               className={inputStyle}
               placeholder="repeat your password"
@@ -99,7 +102,7 @@ function SignUp() {
 
             <div>
               <Button
-                // disabled={isLoading}
+                disabled={isLoading}
                 type="submit"
                 className="bg-c-black rounded-md p-4 text-xl text-slate-50 transition-all hover:opacity-90"
               >
