@@ -129,12 +129,28 @@ async function checkEmailExists(email) {
   }
 }
 
+// user
+
+export async function getUser(email) {
+  // console.log(email);
+  const { data: users, error } = await supabase
+    .from("users")
+    .select("*")
+    .eq("email", email)
+    .single();
+
+  if (error) {
+    console.error(error.message);
+    throw error("couldn't get the orders of user");
+  }
+
+  return users;
+}
+
 // orders
 /////////////////////////////////////////////////////////////////////
 
 export async function getOrdersbyId(email) {
-  console.log(email);
-
   const { data: users, error } = await supabase
     .from("users")
     .select("orders")
@@ -156,10 +172,7 @@ export async function updateOrders({ order, email }) {
 
   const currentOrders = orders?.orders || [];
 
-  // console.log(currentOrders);
-
   const newOrders = [...currentOrders, order];
-  // console.log(newOrders);
 
   //
   const { data, error } = await supabase
@@ -170,4 +183,21 @@ export async function updateOrders({ order, email }) {
   if (error) throw new Error("Couldn't update the user's orders");
 
   return data;
+}
+
+export async function deleteOrders({ email, id }) {
+  const orders = await getOrdersbyId(email);
+
+  const newData = orders?.orders.filter((el) => el.id !== id);
+
+  const { data, error } = await supabase
+    .from("users")
+    .update({ orders: newData })
+    .eq("email", email)
+    .select();
+  if (error) throw new Error("Couldn't update the user's orders");
+
+  return data;
+
+  //
 }

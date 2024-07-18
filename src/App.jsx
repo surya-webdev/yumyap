@@ -8,6 +8,7 @@ import Login from "./ui/Login";
 import SignUp from "./ui/Signup";
 import { Toaster } from "react-hot-toast";
 import Protected from "./pages/Protected";
+import Cart from "./ui/Cart";
 
 function App() {
   const queryClient = new QueryClient();
@@ -26,7 +27,7 @@ function App() {
             {/* <Route index element={<Navigate replace to={"/"} />} /> */}
             <Route index path="/" element={<Home />} />
             <Route path="restaurant/:id" element={<RestaurantDetail />} />
-            {/* <Route path="cart" element={<} */}
+            <Route path="cart" element={<Cart />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />

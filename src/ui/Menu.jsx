@@ -22,6 +22,7 @@ function Menu({ item, hotelId }) {
     e.preventDefault();
     const updateItem = {
       ...item,
+      price: price * quantity,
       quantity: quantity,
       hotelId,
     };

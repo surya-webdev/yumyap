@@ -10,6 +10,14 @@ function Applayout() {
 
   return (
     <>
+      <ul>
+        <li>
+          <a href="/cart">Cart</a>
+        </li>
+        <li>
+          <a href="/">Home</a>
+        </li>
+      </ul>
       <div className="container my-10 flex justify-end gap-4">
         <p>{isCurrUser?.user_metadata.fullName}</p>
 
