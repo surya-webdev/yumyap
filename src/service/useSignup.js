@@ -7,12 +7,11 @@ export function useSignup() {
     mutationFn: ({ name, email, password }) =>
       newUser({ name, email, password }),
     onSuccess: () => {
-      toast.success(
-        "your account created sucesfully please login now! Explore our foods",
-      );
+      toast.success("your account has created sucesfully , please login now!");
     },
     onError: (error) => {
-      toast.error(error.message);
+      console.error(error.message);
+      toast.error("Please Check your details & Try again :)");
     },
   });
   return {

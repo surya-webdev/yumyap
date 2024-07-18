@@ -4,7 +4,7 @@ import { getRestaurant } from "./dataApi";
 function useGetRestaurant() {
   const { data, isLoading } = useQuery({
     queryFn: getRestaurant,
-    queryKey: "restaurant",
+    queryKey: ["restaurant"],
   });
 
   // return

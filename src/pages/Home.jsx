@@ -1,10 +1,11 @@
+import useCreateGuest from "../service/useCreateGuest";
 import Button from "../ui/Button";
 import Restaurant from "../ui/Restaurant";
 
 function Home() {
   return (
     <section className="container mx-auto flex flex-col">
-      <div className="hero relative mx-2 h-[100vw] w-full bg-cover bg-left-top bg-no-repeat md:h-[45vw]">
+      {/* <div className="hero relative mx-2 h-[100vw] w-full bg-cover bg-left-top bg-no-repeat md:h-[45vw]">
         <div className="absolute left-8 top-[30%] flex flex-col gap-4">
           <h1 className="text-xl font-medium text-white md:text-4xl">
             Enjoy your food while sitting in your home!
@@ -17,7 +18,7 @@ function Home() {
             <Button>Order Now</Button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <Restaurant />
     </section>

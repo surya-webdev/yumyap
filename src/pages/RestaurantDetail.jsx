@@ -1,11 +1,10 @@
 import useRestaurantId from "../service/useRestaurantId";
-import Button from "../ui/Button";
 import Menu from "../ui/Menu";
 import Spinner from "../ui/Spinner";
 
 function RestaurantDetail() {
   const { data = {}, isLoading } = useRestaurantId();
-  console.log(data);
+  // console.log(data);
   if (isLoading) return <Spinner />;
 
   const { image, id, menus, name, rating, description, address } = data;
@@ -29,8 +28,8 @@ function RestaurantDetail() {
         </a>
       </div>
       <section className="my-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {menus.map((item) => (
-          <Menu item={item} key={item.id} />
+        {menus?.map((item) => (
+          <Menu item={item} hotelId={id} key={item.id} />
         ))}
       </section>
     </section>

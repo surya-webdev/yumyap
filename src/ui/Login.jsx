@@ -35,7 +35,7 @@ function Login() {
             Email
           </label>
           <input
-            // disabled={isLoading}
+            disabled={isLoading}
             id="email"
             type="email"
             className={inputStyle}
@@ -51,7 +51,7 @@ function Login() {
             Password
           </label>
           <input
-            // disabled={isLoading}
+            disabled={isLoading}
             id="password"
             className={inputStyle}
             placeholder="password"
