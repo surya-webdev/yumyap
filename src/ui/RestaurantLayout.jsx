@@ -8,7 +8,7 @@ function RestaurantLayout({ data }) {
 
   const { id, image, description, name, address, ratings } = data;
   return (
-    <div className="flex cursor-pointer flex-col gap-3 overflow-hidden rounded-lg shadow-lg transition-shadow hover:shadow-xl">
+    <div className="mx-4 flex cursor-pointer flex-col gap-3 overflow-hidden rounded-lg py-5 shadow-lg transition-shadow hover:shadow-xl">
       <img className="rounded-lg" src={image} alt={name} />
       <div className="flex flex-1 flex-col justify-end gap-4 px-6 py-2">
         <h1 className="text-xl font-semibold md:text-3xl">{name}</h1>

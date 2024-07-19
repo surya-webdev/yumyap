@@ -9,6 +9,8 @@ function Menu({ item, hotelId }) {
   //
   const { isUpdateOrder, isUpdating } = useOrderUpdate();
 
+  const btnStyle = "rounded bg-[#592c0c] text-white px-2 py-1";
+
   const { isCurrUser } = useCurrAuth();
   const [quantity, setQuantity] = useState(1);
 
@@ -37,13 +39,19 @@ function Menu({ item, hotelId }) {
         <p className="text-xl font-bold md:text-2xl">{name}</p>
         <div className="my-4 flex items-center justify-between">
           <p className="text-2xl">{`₹${price}`}</p>
-          <div>
-            <div className="flex gap-4 text-xl">
-              <button onClick={() => setQuantity((s) => (s <= 0 ? 1 : s - 1))}>
+          <div className="flex gap-10">
+            <div className="flex items-center gap-4 text-xl">
+              <button
+                className={btnStyle}
+                onClick={() => setQuantity((s) => (s <= 0 ? 1 : s - 1))}
+              >
                 -
               </button>
               <p>{quantity === 0 ? setQuantity((s) => 1) : quantity}</p>
-              <button onClick={() => setQuantity((s) => (s > 30 ? 1 : s + 1))}>
+              <button
+                className={btnStyle}
+                onClick={() => setQuantity((s) => (s > 30 ? 1 : s + 1))}
+              >
                 +
               </button>
             </div>

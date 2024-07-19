@@ -33,27 +33,26 @@ function CartItem({ cart }) {
   if (isDeleteLoading || isLoading) return <Spinner />;
 
   return (
-    <div className="my-2 flex w-full justify-between gap-10">
-      <div className="flex gap-6">
-        <img
-          className="h-[10rem] w-[10rem] rounded-md"
-          src={image}
-          alt={name}
-        />
-        <div className="flex-col justify-between">
-          <p className="text-xl font-bold">{name}</p>
-          <p>{data?.name}</p>
-          <p>{data?.description}</p>
-          <div className="flex gap-2">
-            <p>Quantity</p>
-            <p>{quantity}</p>
-          </div>
-          <p className="text-lg font-normal">{`₹${price}`}</p>
+    <div className="my-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-10">
+      <img className="h-[10rem] w-[10rem] rounded-md" src={image} alt={name} />
+      <div className="flex-col justify-between">
+        <p className="text-xl font-bold">{name}</p>
+        <p>{data?.name}</p>
+        <p>{data?.description}</p>
+        <div className="flex flex-col gap-2">
+          <p>
+            Quantity
+            <span className="text-[#432109 font-semibold"> {quantity}</span>
+          </p>
+          <p className="hidden text-lg font-semibold text-primary sm:block">{`₹${price}`}</p>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-4 text-xl"></div>
-      <div>
-        <button onClick={(e) => handle(e)} className="text-lg">
+      <div className="flex justify-between">
+        <p className="text-lg font-semibold sm:hidden">{`₹${price}`}</p>
+        <button
+          onClick={(e) => handle(e)}
+          className="mx-2 self-end text-[2rem] text-[#432109] sm:self-center"
+        >
           <MdDelete />
         </button>
       </div>
