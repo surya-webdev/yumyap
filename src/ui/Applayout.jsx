@@ -1,82 +1,10 @@
 import { Outlet } from "react-router";
-import { NavLink } from "react-router-dom";
-import { MdRestaurantMenu } from "react-icons/md";
-import { MdClose } from "react-icons/md";
-
-import { useCurrAuth } from "../service/useCurrAuth";
-import { useState } from "react";
+import Navigation from "./Navigation";
 
 function Applayout() {
-  const links = [
-    { link: "/", title: "Home" },
-    { link: "/cart", title: "Cart" },
-    { link: "/orders", title: "Orders" },
-  ];
-
-  const { isCurrUser = {} } = useCurrAuth();
-  const { fullName = "" } = isCurrUser.user_metadata;
-
-  const [isOpen, setIsopen] = useState(false);
-
   return (
     <>
-      <header className="relative">
-        <nav className="mx-auto flex items-center justify-between">
-          <img
-            className="h-10 w-[6.2rem] md:h-20 md:w-[10rem]"
-            src="logo.png"
-            alt="logo "
-          />
-          <ul className="mx-2 hidden items-center justify-center gap-4 sm:flex">
-            {links.map((items) => (
-              <li key={items.link}>
-                <NavLink
-                  to={items.link}
-                  className={({ isActive }) => (isActive ? "text-primary" : "")}
-                >
-                  {items.title}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-          <div className="hidden items-center justify-center gap-4 sm:flex">
-            <p>{fullName}</p>
-            <img
-              className="h-10 w-10"
-              src="./default-user.jpg"
-              alt="default user"
-            />
-          </div>
-          {/* Mobile navigation */}
-          <div className="m-2 flex gap-2 sm:hidden">
-            <p className="flex items-center gap-2 text-primary">{fullName}</p>
-            <img className="h-8 w-8" src="./default-user.jpg" />
-            <button
-              className="z-20 text-2xl"
-              onClick={() => setIsopen((s) => !s)}
-            >
-              {isOpen ? <MdClose /> : <MdRestaurantMenu />}
-            </button>
-            {isOpen && (
-              <ul className="fixed right-0 top-0 z-10 mx-2 flex h-screen w-full flex-col items-center justify-center gap-4 bg-white">
-                {links.map((items) => (
-                  <li key={items.link}>
-                    <NavLink
-                      onClick={() => setIsopen((s) => !s)}
-                      to={items.link}
-                      className={({ isActive }) =>
-                        isActive ? "text-primary" : ""
-                      }
-                    >
-                      {items.title}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </nav>
-      </header>
+      <Navigation />
       <Outlet />
     </>
   );

@@ -33,7 +33,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
         <Toaster
-          position="top-center"
+          position="left-top"
           reverseOrder={false}
           gutter={12}
           containerClassName=""

@@ -33,12 +33,12 @@ function CartItem({ cart }) {
   if (isDeleteLoading || isLoading) return <Spinner />;
 
   return (
-    <div className="my-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-10">
+    <div className="my-2 flex flex-col items-center gap-2 rounded-lg p-4 shadow-lg transition-shadow hover:shadow-xl sm:flex-row sm:gap-10">
       <img className="h-[10rem] w-[10rem] rounded-md" src={image} alt={name} />
-      <div className="flex-col justify-between">
+      <div className="flex-col justify-between gap-10">
         <p className="text-xl font-bold">{name}</p>
-        <p>{data?.name}</p>
-        <p>{data?.description}</p>
+        <p className="text-lg font-medium text-primary">{data?.name}</p>
+        <p className="text-sm">{data?.description}</p>
         <div className="flex flex-col gap-2">
           <p>
             Quantity
@@ -47,7 +47,7 @@ function CartItem({ cart }) {
           <p className="hidden text-lg font-semibold text-primary sm:block">{`₹${price}`}</p>
         </div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex w-full justify-between sm:justify-end">
         <p className="text-lg font-semibold sm:hidden">{`₹${price}`}</p>
         <button
           onClick={(e) => handle(e)}

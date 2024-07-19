@@ -161,13 +161,11 @@ export async function getOrdersbyId(email) {
     console.error(error.message);
     throw error("couldn't get the orders of user");
   }
-  console.log(users);
+
   return users;
 }
 
 export async function updateOrders({ order, email }) {
-  console.log(order);
-
   const orders = await getOrdersbyId(email);
 
   const currentOrders = orders?.orders || [];
@@ -195,9 +193,62 @@ export async function deleteOrders({ email, id }) {
     .update({ orders: newData })
     .eq("email", email)
     .select();
-  if (error) throw new Error("Couldn't update the user's orders");
+  if (error) throw new Error("Couldn't delete the cart");
 
   return data;
 
   //
+}
+// delete cart by email
+export async function deleteCart(email) {
+  console.log(email);
+  const initalState = [];
+  const { data, error } = await supabase
+    .from("users")
+    .update({ orders: initalState })
+    .eq("email", email)
+    .select();
+  if (error) throw new Error("Couldn't delete the cart");
+
+  return data;
+}
+
+// Confirm orders
+
+export async function getConfirmOrders(email) {
+  const { data: users, error } = await supabase
+    .from("users")
+    .select("confirmOrders")
+    .eq("email", email)
+    .single();
+
+  if (error) {
+    console.error(error.message);
+    throw error("couldn't get the orders of user");
+  }
+
+  return users;
+}
+
+export async function confirmOrders(data) {
+  //
+
+  const orders = await getConfirmOrders(data?.address?.email);
+
+  const currentOrders = orders?.confirmOrders || [];
+
+  const newOrders = [...currentOrders, data];
+
+  // console.log(newOrders);
+
+  const { data: order, error } = await supabase
+    .from("users")
+    .update({ confirmOrders: newOrders })
+    .eq("email", data?.address?.email)
+    .select();
+  if (error) throw new Error("Couldn't update the user's orders");
+
+  const cartDelete = deleteCart(data?.address?.email);
+
+  return cartDelete, order;
 }

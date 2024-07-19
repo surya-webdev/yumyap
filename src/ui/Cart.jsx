@@ -1,10 +1,13 @@
+import { useState } from "react";
 import useCartData from "../service/useCartData";
+import Address from "./Address";
 import Button from "./Button";
 import CartItem from "./CartItem";
 import Spinner from "./Spinner";
 
 function Cart() {
   const { users, isLoading } = useCartData();
+  const [isOpen, setIsopen] = useState(false);
 
   // it will render until the component fetch the datas
   if (isLoading) return <Spinner />;
@@ -25,7 +28,7 @@ function Cart() {
   const discountedPrice = Math.ceil(totalPrice * 0.9);
 
   return (
-    <section className="container mx-2 my-10 sm:mx-auto">
+    <section className="container relative mx-2 my-10 sm:mx-auto">
       <div className="flex items-center justify-between"></div>
       <div className="flex flex-col items-center justify-center gap-10">
         <p className="self-start text-3xl font-bold text-primary">Your Cart</p>
@@ -40,9 +43,15 @@ function Cart() {
               <p className="line-through">{`₹${totalPrice}`}</p>
             </div>
           )}
-          <Button>Check Out</Button>
+          <Button onClick={() => setIsopen((s) => !s)}>Check Out</Button>
         </div>
       </div>
+      {isOpen && (
+        <div className="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-[#0000008d] backdrop-blur-sm">
+          <Address price={discountedPrice} handler={setIsopen} />
+        </div>
+      )}
+      {/* <Address price={discountedPrice} handler={setIsopen} /> */}
     </section>
   );
 }

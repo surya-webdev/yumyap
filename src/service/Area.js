@@ -1,0 +1,17 @@
+export const Area = [
+  "Indiranagar",
+  "Koramangala",
+  "Jayanagar",
+  "HSR Layout",
+  "Whitefield",
+  "Electronic City",
+  "Marathahalli",
+  "MG Road",
+  "Brigade Road",
+  "Cantonment",
+  "Wilson Garden",
+  "Koramanagla",
+  "Lakasandra",
+  "Mg Road",
+  "Other",
+];
