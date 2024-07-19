@@ -87,6 +87,14 @@ export async function currUserAuth() {
   }
 }
 
+export async function signOut() {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    console.error(error.message);
+    throw new Error(error.message);
+  }
+}
+
 ///////////////////////////////////////////////////////
 // updating the guest
 

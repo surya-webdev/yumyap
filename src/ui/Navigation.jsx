@@ -3,6 +3,8 @@ import { MdRestaurantMenu } from "react-icons/md";
 import { MdClose } from "react-icons/md";
 import { useCurrAuth } from "../service/useCurrAuth";
 import { useState } from "react";
+import { signOut } from "../service/dataApi";
+import useSignOut from "../service/useSignOut";
 
 function Navigation() {
   const links = [
@@ -10,6 +12,7 @@ function Navigation() {
     { link: "/cart", title: "Cart" },
     { link: "/orders", title: "Orders" },
   ];
+  const { mutate, isLoading } = useSignOut();
 
   const { isCurrUser = {} } = useCurrAuth();
   const { fullName = "" } = isCurrUser.user_metadata;
