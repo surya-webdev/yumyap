@@ -30,6 +30,14 @@ Follow these steps to set up and run the YumYap project locally:
 
 `npm run dev`
 
+## Login crendential
+
+you can signup to the website by providing gmail & password or use our testing crediential.
+
+`Gmail:tester@gmail.com`
+
+`Password: 1234567`
+
 ## Live Website
 
 You can check out the live version of the website at: [YumYap](https://yumyap.netlify.app/) .
