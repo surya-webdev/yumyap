@@ -36,7 +36,7 @@ function Navigation() {
             </li>
           ))}
         </ul>
-        <div className="hidden items-center justify-center gap-4 text-xl text-primary sm:flex">
+        <div className="mx-2 hidden items-center justify-center gap-4 text-xl text-primary sm:flex">
           <p>{fullName}</p>
           <img
             className="h-10 w-10"
@@ -57,7 +57,7 @@ function Navigation() {
             {isOpen ? <MdClose /> : <MdRestaurantMenu />}
           </button>
           {isOpen && (
-            <ul className="fixed right-0 top-0 z-10 mx-2 flex h-screen w-full flex-col items-center justify-center gap-4 bg-white text-2xl">
+            <ul className="fixed right-0 top-0 z-10 flex h-screen w-full flex-col items-center justify-center gap-4 bg-white text-2xl">
               {links.map((items) => (
                 <li key={items.link}>
                   <NavLink

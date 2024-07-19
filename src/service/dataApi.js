@@ -237,7 +237,7 @@ export async function confirmOrders(data) {
 
   const currentOrders = orders?.confirmOrders || [];
 
-  const newOrders = [...currentOrders, data];
+  const newOrders = [...currentOrders, { data }];
 
   // console.log(newOrders);
 
@@ -251,4 +251,18 @@ export async function confirmOrders(data) {
   const cartDelete = deleteCart(data?.address?.email);
 
   return cartDelete, order;
+}
+
+export async function getOrderData(email) {
+  console.log(email);
+
+  const { data: users, error } = await supabase
+    .from("users")
+    .select("confirmOrders")
+    .eq("email", email);
+
+  if (error) throw new Error("Couldn't update the user's orders");
+
+  return users;
+  //
 }

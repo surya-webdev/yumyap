@@ -16,7 +16,7 @@ function CartItem({ cart }) {
   //
   function handle(e) {
     e.preventDefault();
-    // console.log();
+
     console.log(id);
     isDeleting({ email, id });
   }

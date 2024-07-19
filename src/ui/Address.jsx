@@ -29,7 +29,7 @@ function Address({ handler, price }) {
     // console.log(name, email, address, area, city, phone);
 
     const confirmOrders = {
-      address: { name, email, address, area, city, phone, id },
+      address: { name, email, address, area, city, phone, id, price },
       orders,
     };
 

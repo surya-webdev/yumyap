@@ -4,9 +4,11 @@ import Address from "./Address";
 import Button from "./Button";
 import CartItem from "./CartItem";
 import Spinner from "./Spinner";
+import EmptyCart from "./EmptyCart";
 
 function Cart() {
   const { users, isLoading } = useCartData();
+
   const [isOpen, setIsopen] = useState(false);
 
   // it will render until the component fetch the datas
@@ -17,7 +19,7 @@ function Cart() {
   if (orders.length === 0 || orders === null)
     return (
       <div>
-        <p>No orders</p>
+        <EmptyCart />
       </div>
     );
 
