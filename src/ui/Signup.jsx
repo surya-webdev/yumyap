@@ -57,12 +57,11 @@ function SignUp() {
             <input
               disabled={isLoading}
               id="email"
-              type="text"
+              type="email"
               className={inputStyle}
               placeholder="eg:you@gmail.com"
               {...register("email", {
                 required: "this field required",
-                pattern: /\S+@\S+\.\S+/,
                 message: "please enter the correct email ",
               })}
             />
