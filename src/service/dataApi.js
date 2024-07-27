@@ -3,6 +3,7 @@ import useCreateGuest from "./useCreateGuest";
 import { useCurrAuth } from "./useCurrAuth";
 
 export async function getRestaurant() {
+  
   const { data: restaurant, error } = await supabase
     .from("restaurant")
     .select("*");

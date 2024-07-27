@@ -5,6 +5,7 @@ function Home() {
   return (
     <section className="container mx-auto flex flex-col">
       <Hero />
+
       <Restaurant />
     </section>
   );
